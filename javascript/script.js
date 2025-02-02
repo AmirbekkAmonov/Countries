@@ -1,6 +1,8 @@
 const searchInput = document.getElementById("search");
 const regionFilter = document.getElementById("region-filter");
 const countriesContainer = document.getElementById("countries");
+const backToTopButton = document.getElementById('backToTop');
+
 
 if (localStorage.getItem("searchText")) {
     searchInput.value = localStorage.getItem("searchText");
@@ -25,16 +27,27 @@ function displayCountries(countries) {
         const countryCard = document.createElement("div");
         countryCard.classList.add("country-card");
         countryCard.innerHTML = `
-            <img src="${country.flags.png}" alt="${country.name.alt} flag">
-            <div class="country-info">
-                 <h3>${country.name.common}</h3>
-                 <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
-                 <p><strong>Region:</strong> ${country.region}</p>
-                 <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "Not Available"}</p>
-            </div>
-        `;
-        
-        countryCard.addEventListener("click", () => {
+        <img src="${country.flags.png}" alt="${country.name.alt} flag">
+        <div class="country-info">
+             <h3>${country.name.common}</h3>
+             <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
+             <p><strong>Region:</strong> ${country.region}</p>
+             <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "Not Available"}</p>
+             <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(country.name.common)}" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="map-link">
+                View on Map
+             </a>
+        </div>
+    `;
+        countryCard.addEventListener("click", (event) => {
+           
+            if (event.target.classList.contains("map-link")) {
+                event.stopPropagation();
+                return;
+            }
+            
             localStorage.setItem("selectedCountry", JSON.stringify(country));
             localStorage.setItem("searchText", ""); 
             localStorage.setItem("selectedRegion", "all"); 
@@ -46,6 +59,7 @@ function displayCountries(countries) {
 
     applyFilters(); 
 }
+
 
 searchInput.addEventListener("input", (e) => {
     const searchText = e.target.value.toLowerCase();
@@ -82,9 +96,6 @@ function applyFilters() {
 }
 
 fetchCountries();
-
-
-const backToTopButton = document.getElementById('backToTop');
 
 window.onscroll = function() {
   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {

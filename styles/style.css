@@ -5,6 +5,26 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #ededed;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #79b7f9;
+}
+
+body.dark-mode::-webkit-scrollbar {
+  width: 10px;
+  background-color: #1f344b;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #007bff;
+}
+
 body {
   font-family: "Nunito Sans", sans-serif;
   background: #f4f4f4;
@@ -26,7 +46,11 @@ header {
   background: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-header h1 {
+header a {
+  text-decoration: none;
+  color: #111517;
+}
+header a h1 {
   font-size: 24px;
   font-weight: 800;
   line-height: 32.74px;
@@ -36,17 +60,17 @@ header h1 {
           text-decoration-skip-ink: none;
 }
 @media (max-width: 560px) {
-  header h1 {
+  header a h1 {
     font-size: 18px;
   }
 }
 @media (max-width: 395px) {
-  header h1 {
+  header a h1 {
     font-size: 16px;
   }
 }
 @media (max-width: 360px) {
-  header h1 {
+  header a h1 {
     font-size: 14px;
   }
 }
@@ -86,6 +110,10 @@ header #theme-toggle {
 
 body.dark-mode header {
   background: #2b3945;
+}
+
+body.dark-mode header a {
+  color: #ffffff;
 }
 
 body.dark-mode #theme-toggle {
@@ -200,6 +228,25 @@ body.dark-mode select {
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
   margin: 5px 0;
+}
+.countries-container .country-info .map-link {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  text-decoration: none;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  margin: 5px 0;
+  color: blue;
+  margin-top: 15px;
+  transition: all 0.3s ease-in-out;
+}
+.countries-container .country-info .map-link:hover {
+  cursor: pointer;
+  color: rgb(46, 46, 255);
+  text-decoration: underline;
 }
 
 body.dark-mode .country-card {

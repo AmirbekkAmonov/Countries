@@ -11,6 +11,25 @@ $card-bg-dark: #2b3945;
     padding: 0;
     box-sizing: border-box;
 }
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #ededed;
+}
+
+::-webkit-scrollbar-thumb { 
+    border-radius: 10px;
+    background-color: #79b7f9;
+}
+
+body.dark-mode::-webkit-scrollbar {
+    width: 10px;
+    background-color: #1f344b;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb { 
+    border-radius: 10px;
+    background-color: #007bff;
+}
 
 body {
     font-family: 'Nunito Sans', sans-serif;
@@ -33,6 +52,9 @@ header {
     background: $light-bg;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
+   a {
+    text-decoration: none;
+    color: $light-text;
     h1 {
         font-size: 24px;
         font-weight: 800;
@@ -53,6 +75,7 @@ header {
             font-size: 14px;
         }
     }
+   }
 
     #theme-toggle {
         font-size: 16px;
@@ -86,6 +109,10 @@ header {
 
 body.dark-mode header {
     background: $card-bg-dark;
+}
+
+body.dark-mode header a {
+    color: $dark-text;
 }
 
 body.dark-mode #theme-toggle {
@@ -200,6 +227,25 @@ body.dark-mode select {
             text-underline-position: from-font;
             text-decoration-skip-ink: none;
             margin: 5px 0;
+        }
+        .map-link {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 16px;
+            text-align: left;
+            text-decoration: none;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            margin: 5px 0;
+            color: blue;
+            margin-top: 15px;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                color: rgb(46, 46, 255);
+                text-decoration: underline;
+            }
         }
     }
 

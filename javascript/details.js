@@ -1,5 +1,6 @@
 const countryDetailsContainer = document.getElementById("country-details");
 const backButton = document.getElementById("back-button");
+const backToTopButton = document.getElementById('backToTop');
 
 backButton.addEventListener("click", () => {
     window.history.back();
@@ -33,9 +34,6 @@ if (country) {
         </div>
     `;
 }
-
-const backToTopButton = document.getElementById('backToTop');
-
 window.onscroll = function() {
   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
     backToTopButton.style.display = "block";
